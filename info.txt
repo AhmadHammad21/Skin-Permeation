@@ -1,0 +1,19 @@
+
+
+MWa: molecular weight
+logk: logp
+mpt: melting point
+
+
+
+ignnore
+skin integering testk
+skin selection criteria
+
+
+
+
+
+
+column E to N 
+target Q and R
