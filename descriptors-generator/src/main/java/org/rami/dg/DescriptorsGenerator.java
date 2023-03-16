@@ -22,12 +22,16 @@ import org.openscience.cdk.DefaultChemObjectBuilder;
 import org.openscience.cdk.aromaticity.Aromaticity;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.exception.InvalidSmilesException;
+import org.openscience.cdk.fingerprint.IFingerprinter;
+import org.openscience.cdk.graph.ConnectivityChecker;
 import org.openscience.cdk.graph.Cycles;
+import org.openscience.cdk.interfaces.IAtom;
 import org.openscience.cdk.interfaces.IAtomContainer;
+import org.openscience.cdk.interfaces.IAtomContainerSet;
 import org.openscience.cdk.qsar.DescriptorEngine;
 import org.openscience.cdk.qsar.DescriptorValue;
 import org.openscience.cdk.qsar.descriptors.molecular.AromaticAtomsCountDescriptor;
-import org.openscience.cdk.qsar.descriptors.molecular.LongestAliphaticChainDescriptor;
+import org.openscience.cdk.qsar.descriptors.molecular.AtomCountDescriptor;
 import org.openscience.cdk.qsar.result.BooleanResult;
 import org.openscience.cdk.qsar.result.DoubleArrayResult;
 import org.openscience.cdk.qsar.result.DoubleResult;
@@ -46,7 +50,6 @@ public class DescriptorsGenerator {
 
     private final List<String> descriptorClasses = Arrays.asList(new String[]{
         "org.openscience.cdk.qsar.descriptors.molecular.ALOGPDescriptor",
-        "org.openscience.cdk.qsar.descriptors.molecular.ALOGPDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.APolDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.AcidicGroupCountDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.AromaticAtomsCountDescriptor",
@@ -59,7 +62,7 @@ public class DescriptorsGenerator {
         "org.openscience.cdk.qsar.descriptors.molecular.BPolDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.BasicGroupCountDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.BondCountDescriptor",
-//        "org.openscience.cdk.qsar.descriptors.molecular.CPSADescriptor",//need 3D coordinates
+        //        "org.openscience.cdk.qsar.descriptors.molecular.CPSADescriptor",//need 3D coordinates
         "org.openscience.cdk.qsar.descriptors.molecular.CarbonTypesDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.ChiChainDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.ChiClusterDescriptor",
@@ -68,9 +71,9 @@ public class DescriptorsGenerator {
         "org.openscience.cdk.qsar.descriptors.molecular.EccentricConnectivityIndexDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.FMFDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.FractionalCSP3Descriptor",
-//        "org.openscience.cdk.qsar.descriptors.molecular.FractionalPSADescriptor",//just devide TPSA/mw
+        //        "org.openscience.cdk.qsar.descriptors.molecular.FractionalPSADescriptor",//just devide TPSA/mw
         "org.openscience.cdk.qsar.descriptors.molecular.FragmentComplexityDescriptor",
-//        "org.openscience.cdk.qsar.descriptors.molecular.GravitationalIndexDescriptor",//need 3D coordinates
+        //        "org.openscience.cdk.qsar.descriptors.molecular.GravitationalIndexDescriptor",//need 3D coordinates
         "org.openscience.cdk.qsar.descriptors.molecular.HBondAcceptorCountDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.HBondDonorCountDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.HybridizationRatioDescriptor",
@@ -79,21 +82,21 @@ public class DescriptorsGenerator {
         "org.openscience.cdk.qsar.descriptors.molecular.KierHallSmartsDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.LargestChainDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.LargestPiSystemDescriptor",
-//        "org.openscience.cdk.qsar.descriptors.molecular.LengthOverBreadthDescriptor",//need 3D coordinates
+        //        "org.openscience.cdk.qsar.descriptors.molecular.LengthOverBreadthDescriptor",//need 3D coordinates
         "org.openscience.cdk.qsar.descriptors.molecular.LongestAliphaticChainDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.MDEDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.MannholdLogPDescriptor",
-//        "org.openscience.cdk.qsar.descriptors.molecular.MomentOfInertiaDescriptor",//need 3D coordinates
+        //        "org.openscience.cdk.qsar.descriptors.molecular.MomentOfInertiaDescriptor",//need 3D coordinates
         "org.openscience.cdk.qsar.descriptors.molecular.PetitjeanNumberDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.PetitjeanShapeIndexDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.RotatableBondsCountDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.RuleOfFiveDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.SmallRingDescriptor",
-//        "org.openscience.cdk.qsar.descriptors.molecular.SpiroAtomCountDescriptor",useless and give wrong values
+        //        "org.openscience.cdk.qsar.descriptors.molecular.SpiroAtomCountDescriptor",useless and give wrong values
         "org.openscience.cdk.qsar.descriptors.molecular.TPSADescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.VABCDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.VAdjMaDescriptor",
-//        "org.openscience.cdk.qsar.descriptors.molecular.WHIMDescriptor",//need 3D coordinates
+        //        "org.openscience.cdk.qsar.descriptors.molecular.WHIMDescriptor",//need 3D coordinates
         "org.openscience.cdk.qsar.descriptors.molecular.WeightDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.WeightedPathDescriptor",
         "org.openscience.cdk.qsar.descriptors.molecular.WienerNumbersDescriptor",
@@ -103,8 +106,9 @@ public class DescriptorsGenerator {
 
     private DescriptorEngine engine = new DescriptorEngine(descriptorClasses, DefaultChemObjectBuilder.getInstance());
     private HashMap<String, List<String>> cache = new HashMap<>();
+    private List<IFingerprinter> fingerprints = new ArrayList<>();
 
-    public DescriptorsGenerator() {
+    public DescriptorsGenerator() throws CDKException {
         engine.getDescriptorInstances().forEach((descriptor) -> {
             if (descriptor instanceof AromaticAtomsCountDescriptor) {
 //                try {
@@ -116,14 +120,21 @@ public class DescriptorsGenerator {
         });
     }
 
+    private static AtomCountDescriptor generateAtomCountDescriptor(String element) throws CDKException {
+        var descriptor = new AtomCountDescriptor();
+        descriptor.setParameters(new String[]{element});
+        return descriptor;
+    }
+
     private List<List<String>> generateDescriptorsTable() throws InvalidSmilesException, FileNotFoundException, IOException, CDKException {
         cache.clear();
         List<List<String>> moleculesDescriptors = new ArrayList<>();
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader()
                 .withIgnoreHeaderCase()
-                .withTrim().parse(new FileReader("data.csv"));
+                .withTrim().parse(new FileReader("data-original.csv"));
         List<String> header = new ArrayList<>();
         header.add("SMILES");
+        header.add("Texpi");
         CDKHydrogenAdder hydrogenAdder = CDKHydrogenAdder.getInstance(DefaultChemObjectBuilder.getInstance());
         boolean addHeaders = false;
         int x = 0;
@@ -132,6 +143,7 @@ public class DescriptorsGenerator {
             x++;
             List<String> descriptors = new ArrayList<>();
             descriptors.add(record.get(2));
+            descriptors.add(record.get(13));
             List<String> list = cache.get(record.get(2));
             if (list != null) {
                 moleculesDescriptors.add(list);
@@ -142,6 +154,20 @@ public class DescriptorsGenerator {
                 hydrogenAdder.addImplicitHydrogens(molecule);
                 AtomContainerManipulator.convertImplicitToExplicitHydrogens(molecule);
                 Cycles.markRingAtomsAndBonds(molecule);
+                //remove salt
+                if (!ConnectivityChecker.isConnected(molecule)) {
+                    IAtomContainerSet molecules = ConnectivityChecker.partitionIntoMolecules(molecule);
+                    molecule = molecules.getAtomContainer(0);
+                    for (IAtomContainer container : molecules.atomContainers()) {
+                        if (container.getBondCount() > molecule.getBondCount()) {
+                            molecule = container;
+                        }
+                    }
+                    for (IAtom atom : molecule.atoms()) {
+                        atom.setFormalCharge(0);
+                    }
+                }                
+
                 engine.process(molecule);
                 for (Map.Entry<Object, Object> entry : molecule.getProperties().entrySet()) {
                     Object k = entry.getKey();
