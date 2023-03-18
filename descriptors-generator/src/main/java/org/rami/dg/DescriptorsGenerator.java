@@ -149,12 +149,7 @@ public class DescriptorsGenerator {
                 moleculesDescriptors.add(list);
             } else {
                 IAtomContainer molecule = new SmilesParser(DefaultChemObjectBuilder.getInstance()).parseSmiles(record.get(2));
-                AtomContainerManipulator.percieveAtomTypesAndConfigureAtoms(molecule);
-                Aromaticity.cdkLegacy().apply(molecule);
-                hydrogenAdder.addImplicitHydrogens(molecule);
-                AtomContainerManipulator.convertImplicitToExplicitHydrogens(molecule);
-                Cycles.markRingAtomsAndBonds(molecule);
-                //remove salt
+                //remove salts and hydrates
                 if (!ConnectivityChecker.isConnected(molecule)) {
                     IAtomContainerSet molecules = ConnectivityChecker.partitionIntoMolecules(molecule);
                     molecule = molecules.getAtomContainer(0);
@@ -166,8 +161,13 @@ public class DescriptorsGenerator {
                     for (IAtom atom : molecule.atoms()) {
                         atom.setFormalCharge(0);
                     }
-                }                
-
+                }
+                AtomContainerManipulator.percieveAtomTypesAndConfigureAtoms(molecule);
+                hydrogenAdder.addImplicitHydrogens(molecule);
+                AtomContainerManipulator.convertImplicitToExplicitHydrogens(molecule);
+                Aromaticity.cdkLegacy().apply(molecule);
+                Cycles.markRingAtomsAndBonds(molecule);
+                
                 engine.process(molecule);
                 for (Map.Entry<Object, Object> entry : molecule.getProperties().entrySet()) {
                     Object k = entry.getKey();
