@@ -8,4 +8,5 @@
   * The results where 56 compounds.
   * LogKp were converted from cm/s to cm/h.
   * Common references with our training datasets were excluded.
+  * Records with missing acceptor temperature were excluded.
   * Do two trials with ionizable compounds excluded in one of the trials.
