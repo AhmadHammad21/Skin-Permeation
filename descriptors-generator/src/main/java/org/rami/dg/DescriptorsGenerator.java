@@ -22,7 +22,6 @@ import org.openscience.cdk.DefaultChemObjectBuilder;
 import org.openscience.cdk.aromaticity.Aromaticity;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.exception.InvalidSmilesException;
-import org.openscience.cdk.fingerprint.IFingerprinter;
 import org.openscience.cdk.graph.ConnectivityChecker;
 import org.openscience.cdk.graph.Cycles;
 import org.openscience.cdk.interfaces.IAtom;
@@ -106,7 +105,6 @@ public class DescriptorsGenerator {
 
     private DescriptorEngine engine = new DescriptorEngine(descriptorClasses, DefaultChemObjectBuilder.getInstance());
     private HashMap<String, List<String>> cache = new HashMap<>();
-    private List<IFingerprinter> fingerprints = new ArrayList<>();
 
     public DescriptorsGenerator() throws CDKException {
         engine.getDescriptorInstances().forEach((descriptor) -> {
