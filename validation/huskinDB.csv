@@ -1,0 +1,18 @@
+Compound name,Smiles,logkp (cm/h),reference,DOI,ionized
+Cytarabine,OC[C@H]1O[C@H]([C@H]([C@@H]1O)O)n1ccc(nc1=O)N,-5.299697499,"Legoabe, 2010",10.1211/jpp.62.06.0012,weak
+"N4-acetyl-4-amino-1-[(2R,3S,4R,5R)-3,4-dihydroxy-5 (hydroxymethyl)oxolan-2-yl] pyrimidin-2-one",OC[C@H]1O[C@H]([C@H]([C@H]1O)O)n1ccc(nc1=O)NC(=O)C,-3.332697499,"Legoabe, 2010",10.1211/jpp.62.06.0012,weak
+"N4-hexanoyl-4-amino-1-[(2R,3S,4R,5R)-3,4-dihydroxy-5 (hydroxymethyl)oxolan-2-yl] pyrimidin-2-one",CCCCCC(=O)Nc1ccn(c(=O)n1)[C@@H]1O[C@@H]([C@@H]([C@@H]1O)O)CO,-2.180697499,"Legoabe, 2010",10.1211/jpp.62.06.0012,weak
+Nortriptyline hydrocloride,CNCCC=C1c2ccccc2CCc2c1cccc2.Cl,-4.402697499,"Melero, 2008",10.1016/j.ejpb.2007.11.012,ionized
+Nortriptyline hydrocloride,CNCCC=C1c2ccccc2CCc2c1cccc2.Cl,-2.887697499,"Melero, 2008",10.1016/j.ejpb.2007.11.012,ionized
+Flurbiprofen,OC(=O)C(c1ccc(c(c1)F)c1ccccc1)C,-1.774697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,ionized
+Flurbiprofen glucoside,OC1O[C@H](COC(=O)C(c2ccc(c(c2)F)c2ccccc2)C)[C@H]([C@@H]([C@H]1O)O)O,-2.920697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,unionizable
+Flurbiprofen mannoside,OC1O[C@H](COC(=O)C(c2ccc(c(c2)F)c2ccccc2)C)[C@H]([C@@H]([C@@H]1O)O)O,-3.378697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,unionizable
+Ibuprofen,CC(Cc1ccc(cc1)C(C(=O)O)C)C,-1.946697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,ionized
+Ibuprofen glucoside,CC(Cc1ccc(cc1)C(C(=O)OC[C@H]1OC(O)[C@@H]([C@H]([C@@H]1O)O)O)C)C,-3.388697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,unionizable
+Ibuprofen mannoside,CC(Cc1ccc(cc1)C(C(=O)OC[C@H]1OC(O)[C@H]([C@H]([C@@H]1O)O)O)C)C,-2.991697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,unionizable
+Ketoprofen,OC(=O)C(c1cccc(c1)C(=O)c1ccccc1)C,-2.594697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,ionized
+Ketoprofen glucoside,OC1O[C@H](COC(=O)C(c2cccc(c2)C(=O)c2ccccc2)C)[C@H]([C@@H]([C@H]1O)O)O,-4.174697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,unionizable
+Ketoprofen mannoside,OC1O[C@H](COC(=O)C(c2cccc(c2)C(=O)c2ccccc2)C)[C@H]([C@@H]([C@@H]1O)O)O,-4.037697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,unionizable
+Naproxen,COc1ccc2c(c1)ccc(c2)C(C(=O)O)C,-3.661697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,ionized
+Naproxen glucoside,COc1ccc2c(c1)ccc(c2)[C@@H](C(=O)OC[C@H]1OC(O)[C@@H]([C@H]([C@@H]1O)O)O)C,-4.329697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,unionizable
+Naproxen mannoside,COc1ccc2c(c1)ccc(c2)[C@@H](C(=O)OC[C@H]1OC(O)[C@H]([C@H]([C@@H]1O)O)O)C,-4.143697499,"Swart, 2005",10.1016/j.ijpharm.2005.05.030,unionizable
