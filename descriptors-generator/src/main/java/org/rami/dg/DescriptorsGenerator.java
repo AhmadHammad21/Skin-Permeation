@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.openscience.cdk.DefaultChemObjectBuilder;
+import org.openscience.cdk.IImplementationSpecification;
 import org.openscience.cdk.aromaticity.Aromaticity;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.exception.InvalidSmilesException;
@@ -29,6 +29,7 @@ import org.openscience.cdk.interfaces.IAtomContainer;
 import org.openscience.cdk.interfaces.IAtomContainerSet;
 import org.openscience.cdk.qsar.DescriptorEngine;
 import org.openscience.cdk.qsar.DescriptorValue;
+import org.openscience.cdk.qsar.IDescriptor;
 import org.openscience.cdk.qsar.descriptors.molecular.AromaticAtomsCountDescriptor;
 import org.openscience.cdk.qsar.descriptors.molecular.AtomCountDescriptor;
 import org.openscience.cdk.qsar.result.BooleanResult;
@@ -133,8 +134,12 @@ public class DescriptorsGenerator {
         List<String> header = new ArrayList<>();
         header.add("SMILES");
         header.add("Texpi");
+        for(IDescriptor descriptor : engine.getDescriptorInstances()){
+            for(String descriptorName : descriptor.getDescriptorNames())
+            header.add(descriptorName);
+        }
+        moleculesDescriptors.add(header);
         CDKHydrogenAdder hydrogenAdder = CDKHydrogenAdder.getInstance(DefaultChemObjectBuilder.getInstance());
-        boolean addHeaders = false;
         int x = 0;
         for (CSVRecord record : records) {
             System.out.println(x);
@@ -165,26 +170,27 @@ public class DescriptorsGenerator {
                 AtomContainerManipulator.convertImplicitToExplicitHydrogens(molecule);
                 Aromaticity.cdkLegacy().apply(molecule);
                 Cycles.markRingAtomsAndBonds(molecule);
-                
+
                 engine.process(molecule);
-                for (Map.Entry<Object, Object> entry : molecule.getProperties().entrySet()) {
-                    Object k = entry.getKey();
-                    Object v = entry.getValue();
-                    if (v instanceof DescriptorValue) {
-                        DescriptorValue value = (DescriptorValue) v;
-                        if (!addHeaders) {
-                            header.addAll(Arrays.asList(value.getNames()));
+                for (int i=0;i<engine.getDescriptorSpecifications().size();i++) {
+                    IImplementationSpecification specification = engine.getDescriptorSpecifications().get(i);
+                    Object v = molecule.getProperty(specification);
+                    if (v == null) {
+                        for(String name : engine.getDescriptorInstances().get(i).getDescriptorNames()){
+                            descriptors.add("NaN");
                         }
+                    } else if (v instanceof DescriptorValue) {
+                        DescriptorValue value = (DescriptorValue) v;
                         IDescriptorResult result = value.getValue();
                         if (result instanceof DoubleArrayResult) {
-                            for (int i = 0; i < result.length(); i++) {
-                                descriptors.add(String.valueOf(((DoubleArrayResult) result).get(i)));
+                            for (int j = 0; j < result.length(); j++) {
+                                descriptors.add(String.valueOf(((DoubleArrayResult) result).get(j)));
                             }
                         } else if (result instanceof DoubleResult) {
                             descriptors.add(String.valueOf(((DoubleResult) result).doubleValue()));
                         } else if (result instanceof IntegerArrayResult) {
-                            for (int i = 0; i < result.length(); i++) {
-                                descriptors.add(String.valueOf(((IntegerArrayResult) result).get(i)));
+                            for (int j = 0; j < result.length(); j++) {
+                                descriptors.add(String.valueOf(((IntegerArrayResult) result).get(j)));
                             }
                         } else if (result instanceof IntegerResult) {
                             descriptors.add(String.valueOf(((IntegerResult) result).intValue()));
@@ -192,10 +198,6 @@ public class DescriptorsGenerator {
                             descriptors.add(String.valueOf(((BooleanResult) result).booleanValue()));
                         }
                     }
-                }
-                if (!addHeaders) {
-                    addHeaders = true;
-                    moleculesDescriptors.add(header);
                 }
                 moleculesDescriptors.add(descriptors);
                 cache.put(record.get(2), descriptors);

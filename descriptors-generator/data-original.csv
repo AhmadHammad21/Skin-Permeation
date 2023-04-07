@@ -84,7 +84,7 @@ No,Compound,SMILES,CAS No,set,MWa,logKowb,Mptc,LogSaqd,LogSoce,Hdf,Hag,MVh,Texpi
 51,Beta-naphthol; 2-naphthol,C1=CC=C2C=C(C=CC2=C1)O,135-19-3,t,144.2,2.71,396,-5.16,-2.45,1,1,109,298,0.1,Repeating the permeation experiment,Flux comparison,-1.55,-6.71,(Roberts et al. 1977)
 218,Beta-naphthol; 2-naphthol,C1=CC=C2C=C(C=CC2=C1)O,135-19-3,t,144,2.71,396,-5.08,-2.37,1,1,121.9,305,0.1,transepidermal electrical resistance,>50 k?/cm2,-1.2,-6.28,(Zhang et al. 2009)
 331,Pindolol,CC(C)NCC(COC1=CC=CC2=C1C=CN2)O,13523-86-9,t,248.32,-0.33,442,-6.64,-6.97,3,4,215.5,310,0.1,Visual check,,-3.7,-10.35,(Suhonen et al. 2003)
-334,Alprenolol,CC(C)NCC(COC1=CC=CC=C1CC=C),13655-52-2,t,249,0.65,381,-2.46,-1.81,2,3,247.5,310,0.1,Visual check,,-2.79,-5.24,(Suhonen et al. 2003)
+334,Alprenolol,CC(C)NCC(COC1=CC=CC=C1CC=C)O,13655-52-2,t,249,0.65,381,-2.46,-1.81,2,3,247.5,310,0.1,Visual check,,-2.79,-5.24,(Suhonen et al. 2003)
 304,Lidocaine,CCN(CC)CC(=O)NC1=C(C=CC=C1C)C,137-58-6,t,234,2.480006943,342,-4.68,-2.2,1,3,166.6,298,0.1,transepidermal electrical resistance,>50 k?cm2,-2.52,-7.2,(Mitragotri et al. 2000)
 312,Lidocaine,CCN(CC)CC(=O)NC1=C(C=CC=C1C)C,137-58-6,t,234,2.480006943,342,-4.68,-2.2,1,3,166.6,298,0.1,transepidermal electrical resistance,>50 k?cm2,-2.52,-7.2,(Mitragotri et al. 2001)
 357,Lidocaine,CCN(CC)CC(=O)NC1=C(C=CC=C1C)C,137-58-6,t*,234.33,2.48,342,-4.79,-2.31,1,3,166.6,298,0.1,,,-2.4,-7.19,(Johnson et al. 1996)
