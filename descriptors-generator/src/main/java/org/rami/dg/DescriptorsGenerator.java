@@ -31,7 +31,6 @@ import org.openscience.cdk.qsar.DescriptorEngine;
 import org.openscience.cdk.qsar.DescriptorValue;
 import org.openscience.cdk.qsar.IDescriptor;
 import org.openscience.cdk.qsar.descriptors.molecular.AromaticAtomsCountDescriptor;
-import org.openscience.cdk.qsar.descriptors.molecular.AtomCountDescriptor;
 import org.openscience.cdk.qsar.result.BooleanResult;
 import org.openscience.cdk.qsar.result.DoubleArrayResult;
 import org.openscience.cdk.qsar.result.DoubleResult;
@@ -44,7 +43,7 @@ import org.openscience.cdk.tools.manipulator.AtomContainerManipulator;
 
 /**
  *
- * @author 20180053
+ * @author Rami Manaf Abdullah
  */
 public class DescriptorsGenerator {
 
@@ -117,12 +116,6 @@ public class DescriptorsGenerator {
 //                }
             }
         });
-    }
-
-    private static AtomCountDescriptor generateAtomCountDescriptor(String element) throws CDKException {
-        var descriptor = new AtomCountDescriptor();
-        descriptor.setParameters(new String[]{element});
-        return descriptor;
     }
 
     private List<List<String>> generateDescriptorsTable() throws InvalidSmilesException, FileNotFoundException, IOException, CDKException {
