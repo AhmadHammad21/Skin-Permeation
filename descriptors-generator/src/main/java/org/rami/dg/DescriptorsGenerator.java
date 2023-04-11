@@ -127,9 +127,10 @@ public class DescriptorsGenerator {
         List<String> header = new ArrayList<>();
         header.add("SMILES");
         header.add("Texpi");
-        for(IDescriptor descriptor : engine.getDescriptorInstances()){
-            for(String descriptorName : descriptor.getDescriptorNames())
-            header.add(descriptorName);
+        for (IDescriptor descriptor : engine.getDescriptorInstances()) {
+            for (String descriptorName : descriptor.getDescriptorNames()) {
+                header.add(descriptorName);
+            }
         }
         moleculesDescriptors.add(header);
         CDKHydrogenAdder hydrogenAdder = CDKHydrogenAdder.getInstance(DefaultChemObjectBuilder.getInstance());
@@ -145,6 +146,7 @@ public class DescriptorsGenerator {
                 moleculesDescriptors.add(list);
             } else {
                 IAtomContainer molecule = new SmilesParser(DefaultChemObjectBuilder.getInstance()).parseSmiles(record.get(2));
+                HashMap<IAtom, Integer> formalCharges = new HashMap<>(molecule.getAtomCount());
                 //remove salts and hydrates
                 if (!ConnectivityChecker.isConnected(molecule)) {
                     IAtomContainerSet molecules = ConnectivityChecker.partitionIntoMolecules(molecule);
@@ -155,21 +157,32 @@ public class DescriptorsGenerator {
                         }
                     }
                     for (IAtom atom : molecule.atoms()) {
+                        formalCharges.put(atom, atom.getFormalCharge());
                         atom.setFormalCharge(0);
                     }
                 }
                 AtomContainerManipulator.percieveAtomTypesAndConfigureAtoms(molecule);
+                boolean unknownAtomType = false;
+                for (IAtom atom : molecule.atoms()) {
+                    if (atom.getAtomTypeName() == null || atom.getAtomTypeName().equals("X")) {
+                        unknownAtomType = true;
+                        atom.setFormalCharge(formalCharges.get(atom));
+                    }
+                }
+                if (unknownAtomType) {
+                    AtomContainerManipulator.percieveAtomTypesAndConfigureAtoms(molecule);
+                }
                 hydrogenAdder.addImplicitHydrogens(molecule);
                 AtomContainerManipulator.convertImplicitToExplicitHydrogens(molecule);
                 Aromaticity.cdkLegacy().apply(molecule);
                 Cycles.markRingAtomsAndBonds(molecule);
 
                 engine.process(molecule);
-                for (int i=0;i<engine.getDescriptorSpecifications().size();i++) {
+                for (int i = 0; i < engine.getDescriptorSpecifications().size(); i++) {
                     IImplementationSpecification specification = engine.getDescriptorSpecifications().get(i);
                     Object v = molecule.getProperty(specification);
                     if (v == null) {
-                        for(String name : engine.getDescriptorInstances().get(i).getDescriptorNames()){
+                        for (String name : engine.getDescriptorInstances().get(i).getDescriptorNames()) {
                             descriptors.add("NaN");
                         }
                     } else if (v instanceof DescriptorValue) {

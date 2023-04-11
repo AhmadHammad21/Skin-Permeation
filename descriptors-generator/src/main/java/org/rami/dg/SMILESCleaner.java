@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -49,6 +50,7 @@ public class SMILESCleaner {
             x++;
             List<String> cleanSmiles = new ArrayList<>();
             IAtomContainer molecule = new SmilesParser(DefaultChemObjectBuilder.getInstance()).parseSmiles(record.get(2));
+            HashMap<IAtom, Integer> formalCharges = new HashMap<>(molecule.getAtomCount());
             //remove salts and hydrates
             if (!ConnectivityChecker.isConnected(molecule)) {
                 IAtomContainerSet molecules = ConnectivityChecker.partitionIntoMolecules(molecule);
@@ -59,10 +61,21 @@ public class SMILESCleaner {
                     }
                 }
                 for (IAtom atom : molecule.atoms()) {
+                    formalCharges.put(atom, atom.getFormalCharge());
                     atom.setFormalCharge(0);
                 }
             }
             AtomContainerManipulator.percieveAtomTypesAndConfigureAtoms(molecule);
+            boolean unknownAtomType = false;
+            for (IAtom atom : molecule.atoms()) {
+                if (atom.getAtomTypeName() == null || atom.getAtomTypeName().equals("X")) {
+                    unknownAtomType = true;
+                    atom.setFormalCharge(formalCharges.get(atom));
+                }
+            }
+            if (unknownAtomType) {
+                AtomContainerManipulator.percieveAtomTypesAndConfigureAtoms(molecule);
+            }
             hydrogenAdder.addImplicitHydrogens(molecule);
             StringWriter stringWriter = new StringWriter();
             SMILESWriter writer = new SMILESWriter(stringWriter);
