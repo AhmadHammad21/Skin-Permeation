@@ -1,3 +1,6 @@
+.*
+!/.gitignore
+
 /descriptors-generator/target/
 /data/
 /descriptors-generator/
