@@ -1,1 +1,8 @@
 /descriptors-generator/target/
+./data
+./descriptors-generator
+./descriptors-trials
+./results
+./GNN-trials
+./validation
+
