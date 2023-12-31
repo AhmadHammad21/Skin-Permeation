@@ -1,1 +1,1 @@
-Study for Skin Permeation for compounds using machine learning
+Study for Skin Permeation for compounds using machine learning.
