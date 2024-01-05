@@ -6,7 +6,6 @@ Our study delves into the exciting realm of transdermal drug delivery, a growing
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Dataset](#dataset)
 - [Methodology](#methodology)
 - [Results](#results)
@@ -38,13 +37,6 @@ Clone the repository to your local machine using:
 #### Install requirements
     pip install -r requirements.txt  
 
-## Usage
-
-#### Navigate to the project directory
-    cd your-repository
-
-#### Execute the main script
-    python main_script.py
 
 #### Explore the results and visualizations generated
 
@@ -79,9 +71,3 @@ The study acknowledges the work of [Cheruvu et al](https://doi.org/10.1016/j.dib
 
 This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/afl-3-0-php/) file for details.
 
-
-<!-- ```bash
-# Example installation steps
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-pip install -r requirements.txt -->
