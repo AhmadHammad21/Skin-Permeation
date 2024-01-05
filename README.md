@@ -22,7 +22,7 @@ This GitHub repository presents a comprehensive study on predicting skin permeab
 
 - Predictive Models: Utilize advanced AI algorithms, including MLR, ensemble methods, and artificial neural networks.
 - Dataset: In vitro human skin permeation parameters for diverse molecules, including drugs and xenobiotics.
-- Molecular Descriptors: Calculated using the Chemistry Development Kit (CDK) for one-dimensional and two-dimensional representations.
+- Molecular Descriptors: Calculated using the [Chemistry Development Kit (CDK)](https://cdk.github.io/) for one-dimensional and two-dimensional representations.
 
 ## Installation
 
@@ -54,8 +54,8 @@ The dataset used in this study was obtained from [Cheruvu et al.](https://doi.or
 ## Methodology
 
 1. Molecular Descriptor Calculation: Employ the CDK to generate descriptors for molecules.
-2. AI Models: Develop regression models using Scikit-Learn with algorithms such as MLR, ensemble methods, and artificial neural networks.
-3. Cluster Analysis: Predict FDA-approved drug permeability, conduct K-means clustering, and use the Anatomical Therapeutic Chemical (ATC) code for drug classification.
+2. AI Models: Develop regression models using [Scikit-Learn](https://scikit-learn.org/stable/) with algorithms such as MLR, ensemble methods, and artificial neural networks.
+3. Cluster Analysis: Predict FDA-approved drug permeability, conduct K-means clustering, and use the [Anatomical Therapeutic Chemical (ATC)](https://www.who.int/tools/atc-ddd-toolkit/atc-classification) code for drug classification.
 ![Workflow Methodology](./images/workflow.jpg)
 
 ## Results
