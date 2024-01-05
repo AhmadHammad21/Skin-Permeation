@@ -1,4 +1,4 @@
-# Skin Permeation
+# Skin Permeability Prediction using Machine Learning
 
 Our study delves into the exciting realm of transdermal drug delivery, a growing preference for patients due to its convenience. Recognizing the challenge posed by the skin's natural barrier to drug permeation, we employed advanced machine learning models to predict skin permeability solely based on descriptors computationally calculated from the chemical structure of the molecule.
 
@@ -13,10 +13,11 @@ Our study delves into the exciting realm of transdermal drug delivery, a growing
 - [Discussion](#discussion)
 - [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
+- [License](#license)
 
 ## Introduction
 
-This GitHub repository presents a comprehensive study on predicting skin permeability of FDA-approved drugs through the development of AI-based predictive models. The research focuses on utilizing molecular descriptors and machine learning techniques to enhance the understanding of physicochemical properties and permeability patterns, with potential applications in drug candidate selection for transdermal formulations.
+This repository contains code and resources for predicting skin permeability of drug molecules using machine learning models. The predictive models are trained on a diverse dataset of molecules, encompassing drugs, xenobiotics, and other chemical compounds.
 
 ## Features
 
@@ -73,6 +74,10 @@ Contributions are welcome! Fork the repository, make your changes, and submit a 
 ## Acknowledgments
 
 The study acknowledges the work of [Cheruvu et al](https://doi.org/10.1016/j.dib.2022.108242). for providing the foundational skin permeability dataset. We acknowledge [DrugBank](https://go.drugbank.com/releases/latest) for providing the dataset of FDA-approved drugs.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/afl-3-0-php/) file for details.
 
 
 <!-- ```bash
