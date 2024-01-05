@@ -12,7 +12,6 @@ Our study delves into the exciting realm of transdermal drug delivery, a growing
 - [Results](#results)
 - [Discussion](#discussion)
 - [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
 ## Introduction
@@ -38,10 +37,38 @@ Clone the repository to your local machine using:
 #### Install requirements
     pip install -r requirements.txt  
 
+## Usage
+
+Provide .
+
+## Dataset
+
+The dataset used in this study was obtained from [Cheruvu et al.](https://doi.org/10.1016/j.dib.2022.108242), providing in vitro human skin permeation parameters for a diverse range of molecules.
 
 ## Methodology
 
+1. Molecular Descriptor Calculation: Employ the CDK to generate descriptors for molecules.
+2. AI Models: Develop regression models using Scikit-Learn with algorithms such as MLR, ensemble methods, and artificial neural networks.
+3. Cluster Analysis: Predict FDA-approved drug permeability, conduct K-means clustering, and use the Anatomical Therapeutic Chemical (ATC) code for drug classification.
 ![Workflow Methodology](./images/workflow.jpg)
+
+## Results
+
+Explore the outcomes of the developed predictive models, including R-squared, RMSE, and MAE metrics. Visualize the systematic study design workflow chart and the clustering of FDA-approved drugs based on their descriptors.
+
+## Discussion
+
+Engage in discussions around the implications of the study results, potential applications in drug development, and future research directions.
+
+## Contributing
+
+Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
+
+## Acknowledgments
+
+The study acknowledges the work of [Cheruvu et al](https://doi.org/10.1016/j.dib.2022.108242). for providing the foundational skin permeability dataset.
+
+
 <!-- ```bash
 # Example installation steps
 git clone https://github.com/your-username/your-repo.git
