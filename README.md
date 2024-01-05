@@ -26,6 +26,9 @@ Highlight key features and functionalities of the project. This section could in
 ## Installation
 
 Provide step-by-step instructions on how to install and set up the project. Include any dependencies or requirements that users need to install.
+- conda create --name myenv python=3.10
+- conda activate myenv
+- pip install -r requirements.txt  
 
 <!-- ```bash
 # Example installation steps
