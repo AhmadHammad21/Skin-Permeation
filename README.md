@@ -67,5 +67,5 @@ The study acknowledges the work of [Cheruvu et al](https://doi.org/10.1016/j.dib
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/afl-3-0-php/) file for details.
+This project is licensed under the MIT License.
 
