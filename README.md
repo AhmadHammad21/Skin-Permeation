@@ -38,8 +38,6 @@ Clone the repository to your local machine using:
     pip install -r requirements.txt  
 
 
-#### Explore the results and visualizations generated
-
 ## Dataset
 
 The dataset used in this study was obtained from [Cheruvu et al.](https://doi.org/10.1016/j.dib.2022.108242), providing in vitro human skin permeation parameters for a diverse range of molecules.
