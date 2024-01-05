@@ -72,7 +72,7 @@ Contributions are welcome! Fork the repository, make your changes, and submit a 
 
 ## Acknowledgments
 
-The study acknowledges the work of [Cheruvu et al](https://doi.org/10.1016/j.dib.2022.108242). for providing the foundational skin permeability dataset.
+The study acknowledges the work of [Cheruvu et al](https://doi.org/10.1016/j.dib.2022.108242). for providing the foundational skin permeability dataset. We acknowledge [DrugBank](https://go.drugbank.com/releases/latest) for providing the dataset of FDA-approved drugs.
 
 
 <!-- ```bash
