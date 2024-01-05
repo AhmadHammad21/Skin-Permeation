@@ -1,6 +1,6 @@
-# Project Title
+# Skin Permeation
 
-Brief description or subtitle explaining the purpose of the project.
+Our study delves into the exciting realm of transdermal drug delivery, a growing preference for patients due to its convenience. Recognizing the challenge posed by the skin's natural barrier to drug permeation, we employed advanced machine learning models to predict skin permeability solely based on descriptors computationally calculated from the chemical structure of the molecule.
 
 ## Table of Contents
 - [Introduction](#introduction)
