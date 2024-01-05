@@ -36,6 +36,10 @@ Provide step-by-step instructions on how to install and set up the project. Incl
 #### Install requirements
     pip install -r requirements.txt  
 
+
+## Methodology
+
+![Workflow Methodology](./images/workflow.jpg)
 <!-- ```bash
 # Example installation steps
 git clone https://github.com/your-username/your-repo.git
