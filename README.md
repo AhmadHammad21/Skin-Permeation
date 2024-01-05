@@ -17,15 +17,17 @@ Our study delves into the exciting realm of transdermal drug delivery, a growing
 
 ## Introduction
 
-Provide a concise introduction to the research project. Explain the problem statement, motivation, and the goals of the research.
+This GitHub repository presents a comprehensive study on predicting skin permeability of FDA-approved drugs through the development of AI-based predictive models. The research focuses on utilizing molecular descriptors and machine learning techniques to enhance the understanding of physicochemical properties and permeability patterns, with potential applications in drug candidate selection for transdermal formulations.
 
 ## Features
 
-Highlight key features and functionalities of the project. This section could include bullet points or a brief feature list.
+- Predictive Models: Utilize advanced AI algorithms, including MLR, ensemble methods, and artificial neural networks.
+- Dataset: In vitro human skin permeation parameters for diverse molecules, including drugs and xenobiotics.
+- Molecular Descriptors: Calculated using the Chemistry Development Kit (CDK) for one-dimensional and two-dimensional representations.
 
 ## Installation
 
-Provide step-by-step instructions on how to install and set up the project. Include any dependencies or requirements that users need to install.
+Clone the repository to your local machine using:
 
 #### Create Environment
     conda create --name myenv python=3.10
