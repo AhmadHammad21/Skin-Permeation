@@ -39,7 +39,13 @@ Clone the repository to your local machine using:
 
 ## Usage
 
-Provide .
+#### Navigate to the project directory
+    cd your-repository
+
+#### Execute the main script
+    python main_script.py
+
+#### Explore the results and visualizations generated
 
 ## Dataset
 
