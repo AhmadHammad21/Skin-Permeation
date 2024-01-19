@@ -4,8 +4,8 @@
 * CAS numbers are converted to smiles using PubChem website and some of them was written manually.
 * 4 salts and 31 H<sub>2</sub>O results were removed from the dataset.
 * 2 Hydrates are converted to their anhydrous forms.
+* data-original.csv is used to generate the descriptors
 
 # Results
 * CDK 2.8 where used to calculate 226 descriptors.
-* geomShape need 3D coordinates and should be ignored.
-* KappaShapeIndicesDescriptor (Kier3) gives NaN with small molecules and should be replaced with 0.
+* The generated descriptors are stored in data-descriptors.csv

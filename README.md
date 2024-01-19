@@ -8,8 +8,6 @@ Our study delves into the exciting realm of transdermal drug delivery, a growing
 - [Installation](#installation)
 - [Dataset](#dataset)
 - [Methodology](#methodology)
-- [Results](#results)
-- [Discussion](#discussion)
 - [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
@@ -48,14 +46,6 @@ The dataset used in this study was obtained from [Cheruvu et al.](https://doi.or
 2. AI Models: Develop regression models using [Scikit-Learn](https://scikit-learn.org/stable/) with algorithms such as MLR, ensemble methods, and artificial neural networks.
 3. Cluster Analysis: Predict FDA-approved drug permeability, conduct K-means clustering, and use the [Anatomical Therapeutic Chemical (ATC)](https://www.who.int/tools/atc-ddd-toolkit/atc-classification) code for drug classification.
 ![Workflow Methodology](./images/workflow.jpg)
-
-## Results
-
-Explore the outcomes of the developed predictive models, including R-squared, RMSE, and MAE metrics. Visualize the systematic study design workflow chart and the clustering of FDA-approved drugs based on their descriptors.
-
-## Discussion
-
-Engage in discussions around the implications of the study results, potential applications in drug development, and future research directions.
 
 ## Contributing
 
